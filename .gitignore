@@ -6,3 +6,6 @@ build/
 
 # Ignore environment files
 .env
+
+# Ignore node_modules in the frontend folder
+frontend/node_modules/
