@@ -28,35 +28,31 @@ const Login = () => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
-    // Simulate login process
+  
     setTimeout(() => {
       setLoading(false);
-
-      // Validate input fields
+  
       if (!email || !password) {
         setError("All fields are required.");
         return;
       }
-
-      // Validate email format
       if (!validateEmail(email)) {
         setError("Invalid email format.");
         return;
       }
-
-      // Check if email exists in validUsers and password matches
+  
       if (validUsers[email] && validUsers[email] === password) {
         if (requiresMFA) {
-          navigate("/mfa-setup"); // Redirect to MFA setup if required
+          navigate("/mfa-setup");
         } else {
-          navigate("/chat"); // Redirect to chat page for regular logins
+          window.location.href = "/frontend/index.html";
         }
       } else {
-        setError("Invalid email or password."); // Show error for invalid credentials
+        setError("Invalid email or password.");
       }
     }, 1000);
   };
+  
 
   return (
     <div style={styles.container}>
